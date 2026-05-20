@@ -1,0 +1,21 @@
+# Maven generated files
+target/
+
+# Test files
+src/test/
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# VS Code files
+.vscode/
+
+# IntelliJ files
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
