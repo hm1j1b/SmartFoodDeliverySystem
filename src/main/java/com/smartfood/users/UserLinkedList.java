@@ -5,8 +5,8 @@ public class UserLinkedList {
     private int count;
 
     // Constructor
-    public UserLinkedList(UserNode head, int count) {
-        this.head = head;
+    public UserLinkedList() {
+        this.head = null;
         this.count = 0;
     }
 
