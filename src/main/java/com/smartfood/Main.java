@@ -1,6 +1,7 @@
 package com.smartfood;
 
 import com.smartfood.delivery.DeliverySystem;
+import com.smartfood.orders.OrderNode;
 import com.smartfood.orders.OrderSystem;
 import com.smartfood.retrieval.DataHashMap;
 import com.smartfood.routes.Dijkstra;
@@ -54,5 +55,25 @@ public class Main {
         dataHashMap.addRestaurant(restaurant1);
         dataHashMap.addRestaurant(restaurant2);
         dataHashMap.addRestaurant(restaurant3);
-    }
+
+        System.out.println("\n=== 2. ORDER PROCESSING ===");
+
+        OrderNode order1 = new OrderNode("O001", "Carrots", 6.00);
+        OrderNode order2 = new OrderNode("O002", "Pyroxene", 5.50);
+        OrderNode order3 = new OrderNode("O003", "Ceiling fan", 10.00);
+
+        orderSystem.placeOrder(order1.orderId, order1.foodItem, order1.price);
+        orderSystem.placeOrder(order2.orderId, order2.foodItem, order2.price);
+        orderSystem.placeOrder(order3.orderId, order3.foodItem, order3.price);
+
+        orderSystem.undoLastOrder();
+
+        orderSystem.processNextOrder();
+
+        dataHashMap.addOrder(order1);
+        dataHashMap.addOrder(order2);
+        dataHashMap.addOrder(order3);
+
+        
+    }      
 }
