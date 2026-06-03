@@ -27,6 +27,6 @@ public class FoodItem {
 
     @Override
     public String toString() {
-        return name + " - RM " + price;
+        return String.format("%s - RM %.2f", name, price);
     }
 }
