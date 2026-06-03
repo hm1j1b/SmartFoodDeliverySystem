@@ -74,6 +74,16 @@ public class Main {
         dataHashMap.addOrder(order2);
         dataHashMap.addOrder(order3);
 
-        
+        System.out.println("\n=== 3. DELIVERY ASSIGNMENT ===");
+
+        deliverySystem.registerRider("R001", "Kazuma", 3.5);
+        deliverySystem.registerRider("R002", "Megumin", 5.2);
+        deliverySystem.registerRider("R003", "Aqua", 6.7);
+        deliverySystem.registerRider("R004", "Darkness", 10.1);
+
+        deliverySystem.showAvailableRiders();
+
+        deliverySystem.assignRiderToOrder("O001");
+        deliverySystem.assignRiderToOrder("O002");
     }      
 }
