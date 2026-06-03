@@ -58,7 +58,7 @@ public class UserLinkedList {
     }
     
     // Display all users
-     public void displayUsers() {
+    public void displayUsers() {
         if (head == null) {
             System.out.println("No users in the system.");
             return;

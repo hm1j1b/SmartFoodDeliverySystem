@@ -1,40 +1,58 @@
 package com.smartfood;
 
+import com.smartfood.delivery.DeliverySystem;
+import com.smartfood.orders.OrderSystem;
+import com.smartfood.retrieval.DataHashMap;
+import com.smartfood.routes.Dijkstra;
+import com.smartfood.routes.Graph;
+import com.smartfood.search.AVLTree;
 import com.smartfood.users.Restaurant;
 import com.smartfood.users.RestaurantLinkedList;
+import com.smartfood.users.User;
 import com.smartfood.users.UserLinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("===== USER MANAGEMENT =====");
-        UserLinkedList users = new UserLinkedList();
+        UserLinkedList userList = new UserLinkedList();
+        RestaurantLinkedList restaurantList = new RestaurantLinkedList();
+        OrderSystem orderSystem = new OrderSystem();
+        DeliverySystem deliverySystem = new DeliverySystem(10);
+        Graph graph = new Graph();
+        Dijkstra dijkstra = new Dijkstra(graph);
+        AVLTree foodTree = new AVLTree();
+        DataHashMap dataHashMap = new DataHashMap();
 
-        users.addUser("U001", "Alice Tan", "011-1234567");
-        users.addUser("U002", "Bob Lim", "012-9876543");
-        users.addUser("U003", "Chloe Wong", "013-5556789");
+        System.out.println("========================================");
+        System.out.println("   SMART FOOD DELIVERY SYSTEM DEMO");
+        System.out.println("========================================");
 
-        users.displayUsers();
+        System.out.println("\n=== 1. USER & RESTAURANT MANAGEMENT ===");
 
-        users.searchUser("U002");
-        users.removeUser("U002");
-        users.searchUser("U002"); // should show not found
+        User user1 = new User("U001", "John Ali", "012-3456789");
+        User user2 = new User("U002", "Natsuki Daniel", "011-9876543");
+        User user3 = new User("U003", "Kitasan Black", "019-715 4361");
 
-        users.displayUsers();
+        userList.addUser(user1.getId(), user1.getName(), user1.getContactInfo());
+        userList.addUser(user2.getId(), user2.getName(),user2.getContactInfo());
+        userList.addUser(user3.getId(), user3.getName(), user3.getContactInfo());
+        
+        Restaurant restaurant1 = new Restaurant("R001", "Oguri Eats", "Klang");
+        Restaurant restaurant2 = new Restaurant("R002", "[Title Card]", "Abydos");
+        Restaurant restaurant3 = new Restaurant("R003", "Kirky's", "Gensokyo");
 
-        // Restaurants
-        System.out.println("===== RESTAURANT MANAGEMENT =====");
-        RestaurantLinkedList restaurants = new RestaurantLinkedList();
+        restaurantList.addRestaurant(restaurant1);
+        restaurantList.addRestaurant(restaurant2);
+        restaurantList.addRestaurant(restaurant3);
 
-        restaurants.addRestaurant(new Restaurant("R001", "Nasi Lemak House", "Bangsar"));
-        restaurants.addRestaurant(new Restaurant("R002", "Tokyo Ramen", "KLCC"));
-        restaurants.addRestaurant(new Restaurant("R003", "Pizza Palace", "Mont Kiara"));
+        userList.displayUsers();
+        restaurantList.displayRestaurants();
 
-        restaurants.displayRestaurants();
+        dataHashMap.addUser(user1);
+        dataHashMap.addUser(user2);
+        dataHashMap.addUser(user3);
 
-        restaurants.searchRestaurant("R001");
-        restaurants.removeRestaurant("R003");
-        restaurants.searchRestaurant("R003"); // should show not found
-
-        restaurants.displayRestaurants();
+        dataHashMap.addRestaurant(restaurant1);
+        dataHashMap.addRestaurant(restaurant2);
+        dataHashMap.addRestaurant(restaurant3);
     }
 }
