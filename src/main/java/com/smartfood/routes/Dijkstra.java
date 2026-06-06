@@ -1,6 +1,11 @@
 package com.smartfood.routes;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Set;
 
 /**
  * Dijkstra's Algorithm implementation for finding the shortest path.
@@ -48,12 +53,12 @@ public class Dijkstra {
             System.out.println("║                    SHORTEST PATH RESULT                      ║");
             System.out.println("╚══════════════════════════════════════════════════════════════╝");
             System.out.printf("Total Distance: %.2f km\n", totalDistance);
-            System.out.println("\n📍 Route:");
+            System.out.println("\nRoute:");
             System.out.print("   ");
             for (int i = 0; i < path.size(); i++) {
                 System.out.print(path.get(i).getName());
                 if (i < path.size() - 1) {
-                    System.out.print(" → ");
+                    System.out.print(" -> ");
                 }
             }
             System.out.println("\n");
